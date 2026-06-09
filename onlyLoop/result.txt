@@ -1,0 +1,23 @@
+Aligning using Umeyama's method...
+Rotation of alignment:
+[[-0.73031289  0.5213853  -0.44136203]
+ [-0.63360896 -0.27553888  0.72292323]
+ [ 0.25530915  0.8076111   0.531584  ]]
+Translation of alignment:
+[-2853189.50681718  4667529.18506515  3268382.91052376]
+Scale correction: 1.0
+--------------------------------------------------------------------------------
+Compared 446 absolute pose pairs.
+Calculating APE for translation part pose relation...
+--------------------------------------------------------------------------------
+APE w.r.t. translation part (m)
+(with SE(3) Umeyama alignment)
+
+       max	0.319320
+      mean	0.112478
+    median	0.106059
+       min	0.008629
+      rmse	0.123767
+       sse	6.832003
+       std	0.051645
+
