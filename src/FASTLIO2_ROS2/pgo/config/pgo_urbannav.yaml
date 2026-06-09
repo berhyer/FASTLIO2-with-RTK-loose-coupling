@@ -1,0 +1,25 @@
+# 内部通信话题 (根据你的 lio_node.cpp 发布名设定)
+cloud_topic: /fastlio2/body_cloud
+odom_topic: /fastlio2/lio_odom
+rtk_topic: /rtk_fix
+map_frame: map
+local_frame: lidar
+
+# 关键帧与回环检测参数
+key_pose_delta_deg: 10.0
+key_pose_delta_trans: 1.0
+loop_search_radius: 10.0      # 室外场景，回环搜索半径可以适当放大
+loop_time_tresh: 30.0         # 必须经过30秒以上才算回环
+loop_score_tresh: 0.20
+loop_submap_half_range: 10
+submap_resolution: 0.2
+min_loop_detect_duration: 5.0
+
+# RTK 融合参数 (核心！)
+rtk_outlier_threshold: 20.0  # M2DGR街区干扰不算特别大，阈值设为 5m 即可拦截异常
+rtk_cauchy_scale: 2.0
+
+# 外参补偿: RTK 接收机(UBLOX) 在 Lidar 坐标系下的位置
+# 严格从标定文件 UBLOX,Xsens GNSS 提取 t = [-0.09825, 0.00582, 0.72673]
+ext_t: [0.0, 0.86, -0.31]
+yaw_offset_deg: 135.0

@@ -1,0 +1,43 @@
+# ---------------- 传感器话题配置 ----------------
+lidar_topic: /os1_cloud_node1/points
+imu_topic: /imu/imu
+
+# ---------------- 坐标系与基础输出 ----------------
+body_frame: body
+world_frame: lidar
+print_time_cost: false
+
+# ---------------- 激光雷达预处理参数 ----------------
+lidar_type: ouster
+imu_acc_scale: 1.0
+scan_line: 16
+lidar_filter_num: 2
+lidar_min_range: 0.5
+lidar_max_range: 80.0
+scan_resolution: 0.15
+map_resolution: 0.3
+
+# ---------------- 地图增量参数 ----------------
+cube_len: 300
+det_range: 60
+move_thresh: 1.5
+
+# ---------------- IMU 真实标定噪声参数 ----------------
+na: 0.0365432018302
+ng: 0.00367396706572
+nba: 0.000433
+nbg: 0.0000266
+
+# ---------------- 初始化与滤波参数 ----------------
+imu_init_num: 20
+near_search_num: 5
+ieskf_max_iter: 3
+
+gravity_align: true
+esti_il: false
+
+# ---------------- 传感器精确硬标定外参 ----------------
+r_il: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+t_il: [-0.050, 0.000, 0.055]
+
+lidar_cov_inv: 1000.0

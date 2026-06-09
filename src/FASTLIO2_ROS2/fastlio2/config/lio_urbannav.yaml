@@ -1,0 +1,43 @@
+# 1. 话题配置 (严格对齐 metadata.yaml)
+imu_topic: /imu/data
+lidar_topic: /velodyne_points
+body_frame: body
+world_frame: lidar
+print_time_cost: false
+
+# 2. 传感器类型与单位 (触发你重构的全兼容代码)
+lidar_type: velodyne
+imu_acc_scale: 1.0 # M2DGR的IMU已经是标准的 m/s^2，千万不能乘 10!
+
+# 3. 雷达处理参数 (室外场景，调大探测范围)
+lidar_filter_num: 6
+lidar_min_range: 2.0  # 略微调大，过滤掉机器人自身车体的反光
+lidar_max_range: 80.0 # Velodyne 室外射程远，调大以获取更多特征
+scan_resolution: 0.2
+map_resolution: 0.4
+
+# 4. 局部地图管理
+cube_len: 300.0
+det_range: 100.0
+move_thresh: 1.5
+
+# 5. IMU 噪声参数 (严格从标定文件 handsfree IMU 提取)
+na: 0.011197   # acc_n
+ng: 0.010270  # gyr_n
+nba: 0.000117  # acc_w
+nbg: 0.000091 # gyr_w
+
+# 6. 算法控制
+imu_init_num: 20
+near_search_num: 5
+ieskf_max_iter: 5
+gravity_align: true
+esti_il: false
+
+# 7. 外参标定 (Lidar 到 IMU 的变换)
+# 标定文件给出的是 IMU在Lidar系下的坐标: [-0.27255, 0.00053, -0.17954]
+# FAST-LIO2 需要的是 Lidar在IMU系下的坐标 t_il，因此必须取负号！
+r_il: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+t_il: [0.0, 0.0, 0.28]
+
+lidar_cov_inv: 1000.0
